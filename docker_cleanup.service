@@ -1,0 +1,11 @@
+[Unit]
+Description=Docker container cleanup
+After=docker.service
+
+[Service]
+ExecStart=/usr/local/bin/docker-cleanup
+Restart=always
+Environment=DOCKER_KILL_MINUTES=63
+Environment=DOCKER_LOG_FILE=/var/log/docker-cleanup.log
+[Install]
+WantedBy=multi-user.target
