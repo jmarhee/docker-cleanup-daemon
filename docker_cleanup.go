@@ -67,7 +67,7 @@ func main() {
 			if err := dockerClient.ContainerRemove(context.Background(), container.ID, types.ContainerRemoveOptions{Force: true}); err != nil {
 				log.Printf("Failed to remove container %s: %s\n", container.ID, err)
 			} else {
-				logFile.WriteString(fmt.Sprintf("%s %s\n", now.Format(time.RFC3339), container.ID))
+				logFile.WriteString(fmt.Sprintf("%s %s %.2f minutes\n", now.Format(time.RFC3339), container.ID, containerRunningTime))
 			}
 		}
 	}
